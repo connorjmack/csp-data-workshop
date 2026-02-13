@@ -1,6 +1,6 @@
 # Data Engineering Workshop
 
-**A hands-on workshop for master's students — from zero to data pipeline with AI-assisted coding.**
+**CSP data workshop for capstone development | Spring 2026**
 
 ---
 
