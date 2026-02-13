@@ -1,0 +1,62 @@
+/* CSP Blue & White Theme Overrides */
+
+:root {
+  /* Primary blue from CSP logo */
+  --md-primary-fg-color: #4A90D9;
+  --md-primary-fg-color--light: #6BA5E3;
+  --md-primary-fg-color--dark: #3A78BF;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+
+  /* Accent blue */
+  --md-accent-fg-color: #3A78BF;
+  --md-accent-fg-color--transparent: #3a78bf1a;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #4A90D9;
+  --md-primary-fg-color--light: #6BA5E3;
+  --md-primary-fg-color--dark: #3A78BF;
+  --md-accent-fg-color: #6BA5E3;
+  --md-accent-fg-color--transparent: #6ba5e31a;
+}
+
+/* Header logo sizing */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2rem;
+  width: auto;
+}
+
+/* Navigation tabs — white text on blue */
+.md-tabs {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+/* Active tab indicator */
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  opacity: 1;
+}
+
+/* Code block accent */
+.md-typeset code {
+  background-color: #4a90d90d;
+}
+
+/* Admonition tip color to match theme */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #4A90D9;
+}
+
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: #4a90d91a;
+}
+
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .tip > summary::before {
+  background-color: #4A90D9;
+}
