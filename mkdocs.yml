@@ -1,0 +1,86 @@
+site_name: Data Engineering Workshop
+site_description: A hands-on workshop for master's students — from zero to data pipeline with AI-assisted coding.
+site_url: ""
+repo_url: ""
+repo_name: ""
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+
+extra:
+  social: []
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: modules/01-overview.md
+      - Gemini Pro Student Login: modules/01a-gemini-login.md
+      - GitHub Account Setup: modules/01b-github-setup.md
+      - Your First Repository: modules/01c-first-repo.md
+  - Terminal Basics:
+      - Navigating the Terminal: modules/02-terminal-basics.md
+      - Essential Commands: modules/02b-essential-commands.md
+  - Gemini CLI:
+      - Installing Gemini CLI: modules/03a-gemini-cli-install.md
+      - Using Gemini CLI: modules/03b-gemini-cli-usage.md
+  - "Demo: Keeling Curve":
+      - Project Overview: modules/04a-keeling-overview.md
+      - "Part 1: Manual Python Approach": modules/04b-keeling-manual.md
+      - "Part 2: AI-Assisted with Gemini CLI": modules/04c-keeling-gemini.md
+      - Wrap-Up & Next Steps: modules/04d-wrapup.md
