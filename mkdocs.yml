@@ -1,8 +1,8 @@
 site_name: Data Engineering Workshop
 site_description: A hands-on workshop for master's students — from zero to data pipeline with AI-assisted coding.
-site_url: ""
-repo_url: ""
-repo_name: ""
+site_url: https://connorjmack.github.io/csp-data-workshop/
+repo_url: https://github.com/connorjmack/csp-data-workshop
+repo_name: connorjmack/csp-data-workshop
 
 theme:
   name: material
