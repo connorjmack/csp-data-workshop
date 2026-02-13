@@ -147,6 +147,159 @@ Allow? (y/n)
 
 ---
 
+## Advanced Workflows: Agentic Development
+
+As you get more comfortable with AI coding assistants, you can adopt patterns that treat the AI as a collaborator on larger projects. These workflows help maintain consistency and structure as projects grow.
+
+### The `gemini.md` File
+
+Similar to how you might have a README for humans, a `gemini.md` file provides instructions specifically for Gemini CLI. When Gemini starts in a directory containing `gemini.md`, it reads this file first to understand your project's context and preferences.
+
+**What goes in `gemini.md`:**
+
+- Project overview and purpose
+- Coding standards (formatting, naming conventions, error handling)
+- File structure explanations
+- Dependencies and environment setup
+- Things to ask before doing (like adding dependencies or changing schemas)
+- Common commands and workflows
+
+**Example `gemini.md`:**
+
+```markdown
+# Weather Data Pipeline Project
+
+## Overview
+This project fetches and analyzes historical weather data from NOAA.
+
+## Code Standards
+- Use pandas for data processing
+- All dates should be in ISO 8601 format (YYYY-MM-DD)
+- Save plots to `outputs/` directory
+- Match existing file style over PEP 8
+
+## Ask Before
+- Adding new dependencies to requirements.txt
+- Changing the data directory structure
+- Modifying any file in `config/`
+
+## Project Structure
+- `fetch/` — scripts to download data
+- `process/` — data cleaning and transformation
+- `analyze/` — statistical analysis and visualization
+- `outputs/` — generated charts and reports
+```
+
+!!! tip "Why this matters"
+    Without `gemini.md`, you'd have to re-explain your project structure and preferences in every session. With it, Gemini automatically knows your conventions and can make better decisions.
+
+### The `plan.md` / `todo.md` Workflow
+
+For larger projects, many developers use a two-file system for planning and execution:
+
+**`plan.md` — The Design Document**
+
+This is your Product Requirements Document (PRD). It contains:
+
+- **What** you're building and **why**
+- High-level architecture and design decisions
+- Key features and requirements
+- Technical constraints
+- Initial task breakdown
+
+Think of it as the blueprint. It changes rarely — usually only when requirements shift.
+
+**`todo.md` — The Living Checklist**
+
+This is derived from `plan.md` but updates constantly as you work:
+
+- Concrete, actionable tasks (often seeded from the plan)
+- Current status: pending, in progress, completed
+- Blockers and dependencies
+- Notes and decisions made during development
+
+**Example workflow:**
+
+1. **Start with planning:**
+   ```
+   I'm building a CO₂ data pipeline. Help me create a plan.md with:
+   - Overview of the project
+   - Required features (fetch data, clean it, visualize trends, export results)
+   - Tech stack (Python, pandas, matplotlib)
+   - Task breakdown
+   ```
+
+2. **Generate the todo list:**
+   ```
+   Based on plan.md, create todo.md with specific tasks
+   ```
+
+3. **Work through tasks:**
+   ```
+   Let's tackle the first pending task in todo.md
+   ```
+
+4. **Update as you go:**
+   ```
+   Mark task #3 as completed and add a new task: "Add error handling for missing data"
+   ```
+
+**Sample `todo.md` structure:**
+
+```markdown
+# TODO: Weather Data Pipeline
+
+## Setup
+- [x] Create project structure
+- [x] Set up conda environment
+- [x] Install pandas, matplotlib, requests
+- [ ] Create gemini.md with project conventions
+
+## Data Fetching
+- [x] Write fetch_noaa.py to download CSV from API
+- [ ] Add retry logic for failed downloads
+- [ ] Add validation: check if CSV has expected columns
+
+## Processing
+- [ ] Parse dates into datetime objects
+- [ ] Handle missing values (interpolate or drop?)
+- [ ] Calculate monthly averages
+
+## Visualization
+- [ ] Line chart: temperature over time
+- [ ] Save to outputs/temp_trend.png
+
+## Documentation
+- [ ] Add docstrings to all functions
+- [ ] Update README with usage instructions
+```
+
+!!! success "The power of this workflow"
+    The AI can now work **autonomously** through your checklist. You say "work on the next pending task" and it knows exactly what to do, staying aligned with your original plan.
+
+### Combining It All
+
+Here's how these pieces work together:
+
+1. **`gemini.md`** — "This is how we work on this project"
+2. **`plan.md`** — "This is what we're building and why"
+3. **`todo.md`** — "This is what's left to do"
+
+With this structure in place, you can have conversations like:
+
+```
+Review plan.md and todo.md. What should we work on next?
+```
+
+```
+According to our gemini.md conventions, refactor the data processing
+module to match our error handling standards
+```
+
+The AI becomes a more effective collaborator because it has **persistent context** about your project.
+
+---
+
 ## Practice Exercise
 
 Try this sequence in Gemini CLI:
