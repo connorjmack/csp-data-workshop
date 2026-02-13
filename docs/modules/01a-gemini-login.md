@@ -70,4 +70,4 @@ If you get a detailed response, you're all set!
 
 ---
 
-**Next:** [GitHub Account Setup →](01b-github-setup.md)
+**Next:** [Installing Gemini CLI →](03a-gemini-cli-install.md)

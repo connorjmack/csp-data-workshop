@@ -68,15 +68,17 @@ extra:
 
 nav:
   - Home: index.md
-  - Getting Started:
+  - Setup:
       - Overview: modules/01-overview.md
-      - Gemini Pro Student Login: modules/01a-gemini-login.md
-      - GitHub Account Setup: modules/01b-github-setup.md
+      - Conda & Python: modules/00a-conda-python.md
+      - VS Code: modules/00b-vscode.md
+      - GitHub Account: modules/01b-github-setup.md
       - Your First Repository: modules/01c-first-repo.md
   - Terminal Basics:
       - Navigating the Terminal: modules/02-terminal-basics.md
       - Essential Commands: modules/02b-essential-commands.md
   - Gemini CLI:
+      - Gemini Pro Student Login: modules/01a-gemini-login.md
       - Installing Gemini CLI: modules/03a-gemini-cli-install.md
       - Using Gemini CLI: modules/03b-gemini-cli-usage.md
   - "Demo: Keeling Curve":
@@ -84,3 +86,5 @@ nav:
       - "Part 1: Manual Python Approach": modules/04b-keeling-manual.md
       - "Part 2: AI-Assisted with Gemini CLI": modules/04c-keeling-gemini.md
       - Wrap-Up & Next Steps: modules/04d-wrapup.md
+  - Claude Code:
+      - Installation & Usage: modules/05-claude-code.md

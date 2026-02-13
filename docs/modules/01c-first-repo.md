@@ -154,4 +154,4 @@ git push
 
 ---
 
-**Next:** [Terminal Basics →](02-terminal-basics.md)
+**Next:** [Navigating the Terminal →](02-terminal-basics.md)

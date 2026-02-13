@@ -170,4 +170,4 @@ These work in most terminals and will save you a lot of time:
 
 ---
 
-**Next:** [Installing Gemini CLI →](03a-gemini-cli-install.md)
+**Next:** [Gemini Pro Student Login →](01a-gemini-login.md)

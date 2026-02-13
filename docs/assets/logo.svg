@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Brain/network icon -->
+  <g transform="translate(8, 6) scale(0.45)">
+    <!-- Hexagonal brain outline -->
+    <path d="M55 5 L95 5 L115 40 L95 75 L55 75 L35 40 Z" fill="none" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Brain network nodes -->
+    <circle cx="60" cy="25" r="5" fill="white"/>
+    <circle cx="85" cy="20" r="4" fill="white"/>
+    <circle cx="50" cy="45" r="4" fill="white"/>
+    <circle cx="75" cy="40" r="6" fill="white"/>
+    <circle cx="95" cy="45" r="4" fill="white"/>
+    <circle cx="65" cy="60" r="4" fill="white"/>
+    <circle cx="85" cy="58" r="5" fill="white"/>
+    <!-- Network connections -->
+    <line x1="60" y1="25" x2="85" y2="20" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="60" y1="25" x2="75" y2="40" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="85" y1="20" x2="75" y2="40" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="85" y1="20" x2="95" y2="45" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="50" y1="45" x2="75" y2="40" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="75" y1="40" x2="95" y2="45" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="75" y1="40" x2="65" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="75" y1="40" x2="85" y2="58" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="65" y1="60" x2="85" y2="58" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="50" y1="45" x2="65" y2="60" stroke="white" stroke-width="2" opacity="0.7"/>
+    <line x1="95" y1="45" x2="85" y2="58" stroke="white" stroke-width="2" opacity="0.7"/>
+  </g>
+  <!-- CSP text -->
+  <text x="68" y="32" font-family="Inter, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="white" letter-spacing="3">CSP</text>
+  <!-- Subtitle -->
+  <text x="68" y="50" font-family="Inter, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="400" fill="rgba(255,255,255,0.85)" letter-spacing="0.5">Data Engineering Workshop</text>
+</svg>
