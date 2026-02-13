@@ -25,13 +25,16 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.indexes
     - navigation.top
     - navigation.footer
     - content.code.copy
     - content.code.annotate
     - toc.follow
+    - toc.integrate
     - search.suggest
     - search.highlight
   icon:
