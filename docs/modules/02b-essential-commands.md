@@ -108,27 +108,29 @@ du -sh my-project/
 
 ## Python-Specific Commands
 
-Since we'll be using Python in the demo project:
+Since we'll be using Python with Conda in the demo project:
 
 ```bash
 # Check Python version
-python3 --version
+python --version
 
-# Create a virtual environment
-python3 -m venv venv
+# Create a conda environment
+conda create -n myproject python=3.12 -y
 
 # Activate it
-source venv/bin/activate    # macOS/Linux
-venv\Scripts\activate       # Windows
+conda activate myproject
 
 # Install packages
-pip install pandas matplotlib
+conda install pandas matplotlib -y
+
+# Or use pip inside the conda environment
+pip install some-package
 
 # Run a script
-python3 my_script.py
+python my_script.py
 
-# Deactivate the virtual environment
-deactivate
+# Deactivate the conda environment
+conda deactivate
 ```
 
 ---
@@ -161,11 +163,11 @@ These work in most terminals and will save you a lot of time:
     cd ..              mv src dst         tail file
     cd ~               rm file            grep pat file
 
-    PIPES              PYTHON             SHORTCUTS
-    cmd1 | cmd2        python3 --version  Tab    = autocomplete
-    cmd > file         python3 -m venv v  Ctrl+C = cancel
-    cmd >> file        source v/bin/act   Ctrl+L = clear
-    cmd 2>&1           pip install pkg    Ctrl+R = search history
+    PIPES              CONDA/PYTHON       SHORTCUTS
+    cmd1 | cmd2        conda create -n x  Tab    = autocomplete
+    cmd > file         conda activate x   Ctrl+C = cancel
+    cmd >> file        conda install pkg  Ctrl+L = clear
+    cmd 2>&1           python script.py   Ctrl+R = search history
     ```
 
 ---

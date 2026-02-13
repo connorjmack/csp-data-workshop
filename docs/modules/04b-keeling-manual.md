@@ -363,9 +363,8 @@ You should now have three PNG files in your directory:
 # Stage all new files
 git add fetch_data.py clean_data.py analyze.py visualize.py requirements.txt
 
-# Don't commit data files or virtual environments
-echo "venv/
-*.csv
+# Don't commit data files or outputs (conda environments live in ~/miniforge3/envs/)
+echo "*.csv
 *.png
 __pycache__/" > .gitignore
 git add .gitignore
@@ -385,18 +384,21 @@ Your project now has a complete data pipeline:
 
 ```
 keeling-curve/
-├── fetch_data.py          ← Downloads raw data
-├── clean_data.py          ← Parses and cleans the CSV
-├── analyze.py             ← Computes statistics and trends
-├── visualize.py           ← Generates plots
-├── requirements.txt       ← Python dependencies
-├── .gitignore             ← Keeps repo clean
-├── co2_monthly.csv        ← Raw data (not committed)
-├── co2_clean.csv          ← Clean data (not committed)
+├── fetch_data.py                  ← Downloads raw data
+├── clean_data.py                  ← Parses and cleans the CSV
+├── analyze.py                     ← Computes statistics and trends
+├── visualize.py                   ← Generates plots
+├── requirements.txt               ← Python dependencies
+├── .gitignore                     ← Keeps repo clean
+├── co2_monthly.csv                ← Raw data (not committed)
+├── co2_clean.csv                  ← Clean data (not committed)
 ├── keeling_curve_full.png         ← (not committed)
 ├── keeling_curve_seasonal.png     ← (not committed)
 └── keeling_curve_decades.png      ← (not committed)
 ```
+
+!!! tip "Conda environments"
+    Notice there's no `venv/` folder — conda environments live centrally in `~/miniforge3/envs/keeling`. This keeps your project directory clean and makes it easy to activate the environment from anywhere.
 
 ---
 

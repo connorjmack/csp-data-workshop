@@ -56,31 +56,32 @@ cd ~/projects/data-engineering-workshop
 mkdir -p keeling-curve
 cd keeling-curve
 
-# Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate   # macOS/Linux
-# venv\Scripts\activate    # Windows
+# Create a conda environment for this project
+conda create -n keeling python=3.12 -y
+
+# Activate it
+conda activate keeling
 
 # Install dependencies
-pip install pandas matplotlib requests
+conda install pandas matplotlib requests -y
 ```
 
-Create a `requirements.txt` file:
+Create a `requirements.txt` file to document dependencies:
 
 ```bash
-echo "pandas
-matplotlib
-requests" > requirements.txt
+echo -e "pandas\nmatplotlib\nrequests" > requirements.txt
 ```
 
 Your project structure should look like:
 
 ```
 keeling-curve/
-├── venv/
 ├── requirements.txt
 └── (your scripts will go here)
 ```
+
+!!! note "Conda environment"
+    The `keeling` environment is separate from your `workshop` environment. This demonstrates how to create project-specific environments — a best practice in data engineering.
 
 ---
 

@@ -17,9 +17,9 @@ cd ~/projects/data-engineering-workshop
 mkdir keeling-curve-ai
 cd keeling-curve-ai
 
-# Set up a virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Create and activate a conda environment for this version
+conda create -n keeling-ai python=3.12 -y
+conda activate keeling-ai
 
 # Start Gemini CLI
 gemini
