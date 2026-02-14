@@ -3,4 +3,6 @@ matplotlib
 requests
 scipy
 statsmodels
+plotly
+kaleido
 numpy
