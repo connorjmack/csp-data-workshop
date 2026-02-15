@@ -57,22 +57,23 @@ def create_overview_plot(df: pd.DataFrame, decomp_df: pd.DataFrame) -> go.Figure
 
     fig.update_layout(
         title={
-            'text': 'Atmospheric CO₂ at Mauna Loa Observatory<br><sub>Observed, Trend, and Deseasonalized Components</sub>',
+            'text': 'Atmospheric CO₂ at Mauna Loa Observatory',
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24, 'color': '#2c3e50'}
+            'font': {'size': 20, 'color': '#2c3e50'}
         },
         xaxis_title='Year',
         yaxis_title='CO₂ Concentration (ppm)',
         hovermode='x unified',
         template='plotly_white',
         height=500,
+        margin=dict(t=60, b=60, l=60, r=60),
         legend=dict(
             yanchor="top",
             y=0.99,
             xanchor="left",
             x=0.01,
-            bgcolor='rgba(255,255,255,0.8)',
+            bgcolor='rgba(255,255,255,0.9)',
             bordercolor='#bdc3c7',
             borderwidth=1
         ),
@@ -87,7 +88,7 @@ def create_decomposition_plot(decomp_df: pd.DataFrame) -> go.Figure:
     fig = make_subplots(
         rows=4, cols=1,
         subplot_titles=('Observed', 'Trend', 'Seasonal', 'Residual'),
-        vertical_spacing=0.08,
+        vertical_spacing=0.1,
         shared_xaxes=True
     )
 
@@ -132,16 +133,17 @@ def create_decomposition_plot(decomp_df: pd.DataFrame) -> go.Figure:
     # Update layout
     fig.update_layout(
         title={
-            'text': 'Seasonal Decomposition of CO₂ Time Series<br><sub>Observed = Trend + Seasonal + Residual</sub>',
+            'text': 'Seasonal Decomposition of CO₂ Time Series',
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24, 'color': '#2c3e50'}
+            'font': {'size': 20, 'color': '#2c3e50'}
         },
-        height=800,
+        height=900,
         showlegend=False,
         template='plotly_white',
         hovermode='x unified',
-        font=dict(family='Arial, sans-serif', size=12, color='#2c3e50')
+        margin=dict(t=80, b=60, l=60, r=60),
+        font=dict(family='Arial, sans-serif', size=11, color='#2c3e50')
     )
 
     # Update y-axis labels
@@ -210,21 +212,22 @@ def create_growth_acceleration_plot(growth_df: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         title={
-            'text': 'CO₂ Growth Rate and Acceleration Over Time<br><sub>First and Second Derivatives Show Worsening Trend</sub>',
+            'text': 'CO₂ Growth Rate and Acceleration Over Time',
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24, 'color': '#2c3e50'}
+            'font': {'size': 20, 'color': '#2c3e50'}
         },
         height=700,
         template='plotly_white',
         hovermode='x unified',
+        margin=dict(t=80, b=60, l=60, r=60),
         font=dict(family='Arial, sans-serif', size=12, color='#2c3e50'),
         legend=dict(
             yanchor="top",
             y=0.99,
             xanchor="right",
             x=0.99,
-            bgcolor='rgba(255,255,255,0.8)',
+            bgcolor='rgba(255,255,255,0.9)',
             bordercolor='#bdc3c7',
             borderwidth=1
         )
@@ -313,22 +316,23 @@ def create_historical_plot() -> go.Figure:
 
         fig.update_layout(
             title={
-                'text': f'{year_span:,} Years of Atmospheric CO₂<br><sub>Ice Core Records + Modern Measurements from Mauna Loa</sub>',
+                'text': f'{year_span:,} Years of Atmospheric CO₂',
                 'x': 0.5,
                 'xanchor': 'center',
-                'font': {'size': 24, 'color': '#2c3e50'}
+                'font': {'size': 20, 'color': '#2c3e50'}
             },
             xaxis_title='Year',
             yaxis_title='CO₂ Concentration (ppm)',
             height=500,
             template='plotly_white',
             hovermode='x unified',
+            margin=dict(t=60, b=60, l=60, r=60),
             legend=dict(
                 yanchor="top",
                 y=0.99,
                 xanchor="left",
                 x=0.01,
-                bgcolor='rgba(255,255,255,0.8)',
+                bgcolor='rgba(255,255,255,0.9)',
                 bordercolor='#bdc3c7',
                 borderwidth=1
             ),
@@ -378,7 +382,7 @@ def create_seasonal_analysis_plot(df: pd.DataFrame) -> go.Figure:
             color_idx = int(i * len(colors) / len(decades))
 
             # Only show legend for first and last decade
-            show_legend = (decade == decades[0] or decade == decades[-1])
+            show_legend = bool(decade == decades[0] or decade == decades[-1])
 
             fig.add_trace(go.Scatter(
                 x=list(range(1, 13)),
@@ -399,21 +403,22 @@ def create_seasonal_analysis_plot(df: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         title={
-            'text': 'Seasonal Cycle Analysis<br><sub>Northern Hemisphere Growing Season Drives Annual Oscillation</sub>',
+            'text': 'Seasonal Cycle Analysis',
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24, 'color': '#2c3e50'}
+            'font': {'size': 20, 'color': '#2c3e50'}
         },
         height=500,
         template='plotly_white',
         showlegend=True,
+        margin=dict(t=60, b=60, l=60, r=60),
         font=dict(family='Arial, sans-serif', size=12, color='#2c3e50'),
         legend=dict(
             yanchor="top",
             y=0.99,
             xanchor="right",
             x=0.99,
-            bgcolor='rgba(255,255,255,0.8)',
+            bgcolor='rgba(255,255,255,0.9)',
             bordercolor='#bdc3c7',
             borderwidth=1
         )
@@ -455,15 +460,16 @@ def create_decade_comparison_plot(df: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         title={
-            'text': 'CO₂ Growth Rate by Decade<br><sub>Acceleration from 0.65 ppm/yr (1950s) to 2.60 ppm/yr (2020s)</sub>',
+            'text': 'CO₂ Growth Rate by Decade',
             'x': 0.5,
             'xanchor': 'center',
-            'font': {'size': 24, 'color': '#2c3e50'}
+            'font': {'size': 20, 'color': '#2c3e50'}
         },
         xaxis_title='Decade',
         yaxis_title='Average Growth Rate (ppm/year)',
         height=500,
         template='plotly_white',
+        margin=dict(t=60, b=60, l=60, r=60),
         font=dict(family='Arial, sans-serif', size=12, color='#2c3e50')
     )
 
@@ -473,13 +479,13 @@ def create_decade_comparison_plot(df: pd.DataFrame) -> go.Figure:
 def generate_html_report(figures: dict, stats: dict) -> str:
     """Generate complete HTML report with all figures and narrative."""
 
-    # Convert figures to HTML
+    # Convert figures to HTML (div only, no full html)
     fig_htmls = {}
     for name, fig in figures.items():
         if fig is not None:
             fig_htmls[name] = fig.to_html(
-                include_plotlyjs='cdn',
-                div_id=name,
+                include_plotlyjs=False,
+                div_id=f'plot-{name}',
                 config={'displayModeBar': True, 'displaylogo': False}
             )
 
@@ -490,6 +496,7 @@ def generate_html_report(figures: dict, stats: dict) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keeling Curve: Interactive Analysis Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         * {{
             margin: 0;
@@ -498,76 +505,83 @@ def generate_html_report(figures: dict, stats: dict) -> str:
         }}
 
         body {{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            margin: 0;
         }}
 
         .container {{
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 20px auto;
             background: white;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
         }}
 
         header {{
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 60px 40px;
+            padding: 40px 30px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }}
 
         header h1 {{
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }}
 
         header .subtitle {{
-            font-size: 1.3em;
-            opacity: 0.9;
+            font-size: 1.1em;
+            opacity: 0.95;
             font-weight: 300;
+            margin: 0;
         }}
 
-        nav {{
+        .view-controls {{
             background: #34495e;
-            padding: 15px 40px;
+            padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 999;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-
-        nav ul {{
-            list-style: none;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }}
 
-        nav a {{
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background 0.3s;
-            font-weight: 500;
-        }}
-
-        nav a:hover {{
+        .view-btn {{
             background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid transparent;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.95em;
+            font-family: inherit;
+        }}
+
+        .view-btn:hover {{
+            background: rgba(255,255,255,0.2);
+        }}
+
+        .view-btn.active {{
+            background: #3498db;
+            border-color: #2980b9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }}
 
         section {{
-            padding: 60px 40px;
-            border-bottom: 1px solid #ecf0f1;
+            padding: 50px 30px;
+            border-bottom: 1px solid #e0e0e0;
         }}
 
         section:nth-child(even) {{
@@ -575,89 +589,114 @@ def generate_html_report(figures: dict, stats: dict) -> str:
         }}
 
         .section-header {{
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }}
 
         .section-header h2 {{
-            font-size: 2.2em;
+            font-size: 1.9em;
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin: 0 0 12px 0;
             border-left: 5px solid #3498db;
-            padding-left: 20px;
+            padding-left: 18px;
+            line-height: 1.3;
         }}
 
         .section-header p {{
-            font-size: 1.1em;
+            font-size: 1em;
             color: #7f8c8d;
-            margin-left: 25px;
+            margin: 0 0 0 23px;
+            line-height: 1.5;
         }}
 
         .stats-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
         }}
 
         .stat-card {{
             background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 22px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             border-left: 4px solid #3498db;
         }}
 
         .stat-card h3 {{
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #7f8c8d;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }}
 
         .stat-card .value {{
-            font-size: 2em;
+            font-size: 1.8em;
             color: #2c3e50;
             font-weight: 700;
+            margin: 5px 0;
+            line-height: 1.2;
         }}
 
         .stat-card .change {{
             font-size: 0.9em;
             color: #e74c3c;
-            margin-top: 5px;
+            margin: 5px 0 0 0;
         }}
 
         .plot-container {{
-            margin: 30px 0;
+            margin: 25px 0 0 0;
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            overflow: hidden;
+            min-height: 500px;
+        }}
+
+        .plot-view {{
+            display: none;
+        }}
+
+        .plot-view.active {{
+            display: block;
+        }}
+
+        .content-section {{
+            display: none;
+        }}
+
+        .content-section.active {{
+            display: block;
         }}
 
         .key-findings {{
             background: #e8f4f8;
-            padding: 30px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 6px;
             border-left: 5px solid #3498db;
-            margin: 30px 0;
+            margin: 30px 0 0 0;
         }}
 
         .key-findings h3 {{
             color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.4em;
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+            line-height: 1.3;
         }}
 
         .key-findings ul {{
             list-style: none;
-            padding-left: 0;
+            padding: 0;
+            margin: 0;
         }}
 
         .key-findings li {{
-            padding: 10px 0;
-            padding-left: 30px;
+            padding: 8px 0 8px 28px;
             position: relative;
+            line-height: 1.6;
         }}
 
         .key-findings li:before {{
@@ -665,13 +704,20 @@ def generate_html_report(figures: dict, stats: dict) -> str:
             position: absolute;
             left: 0;
             color: #3498db;
+            font-size: 0.8em;
+            top: 10px;
         }}
 
         footer {{
             background: #2c3e50;
             color: white;
-            padding: 40px;
+            padding: 35px 30px;
             text-align: center;
+        }}
+
+        footer p {{
+            margin: 8px 0;
+            line-height: 1.6;
         }}
 
         footer a {{
@@ -686,30 +732,119 @@ def generate_html_report(figures: dict, stats: dict) -> str:
         .warning-box {{
             background: #fff3cd;
             border-left: 5px solid #f39c12;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
+            padding: 18px 22px;
+            margin: 25px 0 0 0;
+            border-radius: 6px;
+            line-height: 1.6;
         }}
 
         .warning-box strong {{
-            color: #f39c12;
-            font-size: 1.1em;
+            color: #c17d00;
+            font-size: 1.05em;
         }}
 
         @media (max-width: 768px) {{
+            .container {{
+                margin: 10px;
+                border-radius: 0;
+            }}
+
+            header {{
+                padding: 30px 20px;
+            }}
+
             header h1 {{
                 font-size: 2em;
             }}
 
+            header .subtitle {{
+                font-size: 1em;
+            }}
+
+            nav {{
+                padding: 10px 15px;
+            }}
+
+            nav ul {{
+                gap: 8px;
+            }}
+
+            nav a {{
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }}
+
             section {{
-                padding: 40px 20px;
+                padding: 35px 20px;
+            }}
+
+            .section-header h2 {{
+                font-size: 1.6em;
+            }}
+
+            .section-header p {{
+                font-size: 0.95em;
             }}
 
             .stats-grid {{
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }}
+
+            .plot-container {{
+                padding: 10px;
+            }}
+
+            .view-controls {{
+                padding: 10px 15px;
+            }}
+
+            .view-btn {{
+                padding: 8px 12px;
+                font-size: 0.85em;
             }}
         }}
     </style>
+    <script>
+        function showView(viewName) {{
+            // Hide all plot views
+            document.querySelectorAll('.plot-view').forEach(el => {{
+                el.classList.remove('active');
+            }});
+
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(el => {{
+                el.classList.remove('active');
+            }});
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.view-btn').forEach(btn => {{
+                btn.classList.remove('active');
+            }});
+
+            // Show selected view
+            const plotView = document.getElementById('view-' + viewName);
+            if (plotView) {{
+                plotView.classList.add('active');
+            }}
+
+            const contentView = document.getElementById('content-' + viewName);
+            if (contentView) {{
+                contentView.classList.add('active');
+            }}
+
+            // Activate clicked button
+            const btn = document.querySelector(`[data-view="${{viewName}}"]`);
+            if (btn) {{
+                btn.classList.add('active');
+            }}
+        }}
+
+        // Show overview by default when page loads
+        window.addEventListener('DOMContentLoaded', () => {{
+            showView('overview');
+        }});
+    </script>
 </head>
 <body>
     <div class="container">
@@ -718,16 +853,14 @@ def generate_html_report(figures: dict, stats: dict) -> str:
             <p class="subtitle">Interactive Analysis of Atmospheric CO₂ (1958–{stats['end_year']})</p>
         </header>
 
-        <nav>
-            <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#decomposition">Decomposition</a></li>
-                <li><a href="#growth">Growth Rate</a></li>
-                <li><a href="#decades">By Decade</a></li>
-                <li><a href="#seasonal">Seasonal</a></li>
-                <li><a href="#historical">Historical</a></li>
-            </ul>
-        </nav>
+        <div class="view-controls">
+            <button class="view-btn" data-view="overview" onclick="showView('overview')">Overview</button>
+            <button class="view-btn" data-view="decomposition" onclick="showView('decomposition')">Decomposition</button>
+            <button class="view-btn" data-view="growth" onclick="showView('growth')">Growth & Acceleration</button>
+            <button class="view-btn" data-view="decades" onclick="showView('decades')">By Decade</button>
+            <button class="view-btn" data-view="seasonal" onclick="showView('seasonal')">Seasonal Analysis</button>
+            <button class="view-btn" data-view="historical" onclick="showView('historical')">Historical Context</button>
+        </div>
 
         <section id="summary">
             <div class="section-header">
@@ -768,130 +901,135 @@ def generate_html_report(figures: dict, stats: dict) -> str:
             </div>
         </section>
 
-        <section id="overview">
-            <div class="section-header">
-                <h2>1. Time Series Overview</h2>
-                <p>Observed measurements, long-term trend, and deseasonalized data</p>
-            </div>
-
+        <section id="main-view">
             <div class="plot-container">
-                {fig_htmls.get('overview', '<p>Figure not available</p>')}
+                <!-- Overview -->
+                <div id="view-overview" class="plot-view">
+                    {fig_htmls.get('overview', '<p>Figure not available</p>')}
+                </div>
+
+                <!-- Decomposition -->
+                <div id="view-decomposition" class="plot-view">
+                    {fig_htmls.get('decomposition', '<p>Figure not available</p>')}
+                </div>
+
+                <!-- Growth -->
+                <div id="view-growth" class="plot-view">
+                    {fig_htmls.get('growth', '<p>Figure not available</p>')}
+                </div>
+
+                <!-- Decades -->
+                <div id="view-decades" class="plot-view">
+                    {fig_htmls.get('decades', '<p>Figure not available</p>')}
+                </div>
+
+                <!-- Seasonal -->
+                <div id="view-seasonal" class="plot-view">
+                    {fig_htmls.get('seasonal', '<p>Figure not available</p>')}
+                </div>
+
+                <!-- Historical -->
+                <div id="view-historical" class="plot-view">
+                    {fig_htmls.get('historical', '<p>Figure not available</p>')}
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>Key Insights</h3>
-                <ul>
-                    <li>The raw monthly observations show clear seasonal oscillations (±3 ppm) superimposed on a strong upward trend</li>
-                    <li>The trend component reveals the underlying exponential-like growth in atmospheric CO₂</li>
-                    <li>Deseasonalized data (with seasonal cycle removed) closely tracks the trend, confirming robust long-term increase</li>
-                    <li>The upward trajectory has not slowed—it continues to steepen</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="decomposition">
-            <div class="section-header">
-                <h2>2. Seasonal Decomposition</h2>
-                <p>Breaking the time series into trend, seasonal, and residual components</p>
-            </div>
-
-            <div class="plot-container">
-                {fig_htmls.get('decomposition', '<p>Figure not available</p>')}
+            <!-- Content sections for each view -->
+            <div id="content-overview" class="content-section">
+                <div class="section-header">
+                    <h2>Time Series Overview</h2>
+                    <p>Observed measurements, long-term trend, and deseasonalized data</p>
+                </div>
+                <div class="key-findings">
+                    <h3>Key Insights</h3>
+                    <ul>
+                        <li>The raw monthly observations show clear seasonal oscillations (±3 ppm) superimposed on a strong upward trend</li>
+                        <li>The trend component reveals the underlying exponential-like growth in atmospheric CO₂</li>
+                        <li>Deseasonalized data (with seasonal cycle removed) closely tracks the trend, confirming robust long-term increase</li>
+                        <li>The upward trajectory has not slowed—it continues to steepen</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>Understanding the Components</h3>
-                <ul>
-                    <li><strong>Observed:</strong> Raw monthly CO₂ measurements from Mauna Loa Observatory</li>
-                    <li><strong>Trend:</strong> Smooth long-term increase, capturing the fundamental growth pattern</li>
-                    <li><strong>Seasonal:</strong> Regular annual cycle (~6 ppm amplitude) driven by Northern Hemisphere vegetation growth</li>
-                    <li><strong>Residual:</strong> Random variation after removing trend and seasonality (mean ≈ 0, small variance)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="growth">
-            <div class="section-header">
-                <h2>3. Growth Rate & Acceleration</h2>
-                <p>First and second derivatives reveal worsening trends</p>
-            </div>
-
-            <div class="plot-container">
-                {fig_htmls.get('growth', '<p>Figure not available</p>')}
+            <div id="content-decomposition" class="content-section">
+                <div class="section-header">
+                    <h2>Seasonal Decomposition</h2>
+                    <p>Breaking the time series into trend, seasonal, and residual components</p>
+                </div>
+                <div class="key-findings">
+                    <h3>Understanding the Components</h3>
+                    <ul>
+                        <li><strong>Observed:</strong> Raw monthly CO₂ measurements from Mauna Loa Observatory</li>
+                        <li><strong>Trend:</strong> Smooth long-term increase, capturing the fundamental growth pattern</li>
+                        <li><strong>Seasonal:</strong> Regular annual cycle (~6 ppm amplitude) driven by Northern Hemisphere vegetation growth</li>
+                        <li><strong>Residual:</strong> Random variation after removing trend and seasonality (mean ≈ 0, small variance)</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>The Problem Is Accelerating</h3>
-                <ul>
-                    <li><strong>Growth rate</strong> (first derivative) has increased from ~0.7 ppm/year (1960s) to ~2.5 ppm/year (2020s)</li>
-                    <li><strong>Acceleration</strong> (second derivative) shows the rate of increase is itself increasing</li>
-                    <li>Positive acceleration means we're not just adding CO₂—we're adding it faster each year</li>
-                    <li>Even short-term variations (El Niño events, economic recessions) barely dent the overall upward march</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="decades">
-            <div class="section-header">
-                <h2>4. Growth Rate by Decade</h2>
-                <p>Comparison across time periods</p>
-            </div>
-
-            <div class="plot-container">
-                {fig_htmls.get('decades', '<p>Figure not available</p>')}
+            <div id="content-growth" class="content-section">
+                <div class="section-header">
+                    <h2>Growth Rate & Acceleration</h2>
+                    <p>First and second derivatives reveal worsening trends</p>
+                </div>
+                <div class="key-findings">
+                    <h3>The Problem Is Accelerating</h3>
+                    <ul>
+                        <li><strong>Growth rate</strong> (first derivative) has increased from ~0.7 ppm/year (1960s) to ~2.5 ppm/year (2020s)</li>
+                        <li><strong>Acceleration</strong> (second derivative) shows the rate of increase is itself increasing</li>
+                        <li>Positive acceleration means we're not just adding CO₂—we're adding it faster each year</li>
+                        <li>Even short-term variations (El Niño events, economic recessions) barely dent the overall upward march</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>Decade-by-Decade Breakdown</h3>
-                <ul>
-                    <li>1950s: 0.65 ppm/year — Slow but measurable increase</li>
-                    <li>1960s–1970s: ~1.0 ppm/year — Post-war industrialization</li>
-                    <li>1980s–1990s: ~1.6 ppm/year — Globalization of economy</li>
-                    <li>2000s–2010s: ~2.2 ppm/year — Rapid growth in developing nations</li>
-                    <li>2020s: {stats['recent_growth']:.2f} ppm/year — Fastest growth on record (despite COVID-19 dip)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="seasonal">
-            <div class="section-header">
-                <h2>5. Seasonal Cycle Analysis</h2>
-                <p>Annual oscillation driven by terrestrial biosphere</p>
-            </div>
-
-            <div class="plot-container">
-                {fig_htmls.get('seasonal', '<p>Figure not available</p>')}
+            <div id="content-decades" class="content-section">
+                <div class="section-header">
+                    <h2>Growth Rate by Decade</h2>
+                    <p>Comparison across time periods</p>
+                </div>
+                <div class="key-findings">
+                    <h3>Decade-by-Decade Breakdown</h3>
+                    <ul>
+                        <li>1950s: 0.65 ppm/year — Slow but measurable increase</li>
+                        <li>1960s–1970s: ~1.0 ppm/year — Post-war industrialization</li>
+                        <li>1980s–1990s: ~1.6 ppm/year — Globalization of economy</li>
+                        <li>2000s–2010s: ~2.2 ppm/year — Rapid growth in developing nations</li>
+                        <li>2020s: {stats['recent_growth']:.2f} ppm/year — Fastest growth on record (despite COVID-19 dip)</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>The Breathing Planet</h3>
-                <ul>
-                    <li><strong>Peak (May):</strong> CO₂ reaches maximum as Northern Hemisphere plants begin growing</li>
-                    <li><strong>Trough (September):</strong> CO₂ reaches minimum after summer photosynthesis absorbs carbon</li>
-                    <li><strong>Amplitude:</strong> ~6 ppm annual cycle—Earth's "breathing"</li>
-                    <li><strong>Decade shift:</strong> Entire seasonal cycle has shifted upward ~100 ppm since 1950s</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="historical">
-            <div class="section-header">
-                <h2>6. Historical Context</h2>
-                <p>Ice core records provide long-term perspective</p>
-            </div>
-
-            <div class="plot-container">
-                {fig_htmls.get('historical', '<p>Figure not available</p>')}
+            <div id="content-seasonal" class="content-section">
+                <div class="section-header">
+                    <h2>Seasonal Cycle Analysis</h2>
+                    <p>Annual oscillation driven by terrestrial biosphere</p>
+                </div>
+                <div class="key-findings">
+                    <h3>The Breathing Planet</h3>
+                    <ul>
+                        <li><strong>Peak (May):</strong> CO₂ reaches maximum as Northern Hemisphere plants begin growing</li>
+                        <li><strong>Trough (September):</strong> CO₂ reaches minimum after summer photosynthesis absorbs carbon</li>
+                        <li><strong>Amplitude:</strong> ~6 ppm annual cycle—Earth's "breathing"</li>
+                        <li><strong>Decade shift:</strong> Entire seasonal cycle has shifted upward ~100 ppm since 1950s</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="key-findings">
-                <h3>Unprecedented Change</h3>
-                <ul>
-                    <li><strong>Pre-industrial (~280 ppm):</strong> Stable for ~10,000 years of human civilization</li>
-                    <li><strong>Industrial Revolution (~1850):</strong> Rapid increase begins</li>
-                    <li><strong>Current (~{stats['co2_end']:.0f} ppm):</strong> {((stats['co2_end']/280 - 1)*100):.0f}% above pre-industrial baseline</li>
-                    <li><strong>Rate of change:</strong> Current increase is ~100× faster than natural glacial-interglacial transitions</li>
-                </ul>
+            <div id="content-historical" class="content-section">
+                <div class="section-header">
+                    <h2>Historical Context</h2>
+                    <p>Ice core records provide long-term perspective</p>
+                </div>
+                <div class="key-findings">
+                    <h3>Unprecedented Change</h3>
+                    <ul>
+                        <li><strong>Pre-industrial (~280 ppm):</strong> Stable for ~10,000 years of human civilization</li>
+                        <li><strong>Industrial Revolution (~1850):</strong> Rapid increase begins</li>
+                        <li><strong>Current (~{stats['co2_end']:.0f} ppm):</strong> {((stats['co2_end']/280 - 1)*100):.0f}% above pre-industrial baseline</li>
+                        <li><strong>Rate of change:</strong> Current increase is ~100× faster than natural glacial-interglacial transitions</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
