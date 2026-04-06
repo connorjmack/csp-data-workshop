@@ -51,19 +51,15 @@ The key difference from Gemini CLI: Claude Code can **chain multiple steps toget
     npm install -g @anthropic-ai/claude-code
     ```
 
-=== "Windows (via WSL)"
+=== "Windows (Anaconda Prompt)"
 
-    Claude Code is designed for Unix-like environments. On Windows, run it inside WSL:
-
-    ```bash
-    wsl --install -d Ubuntu
-    ```
-
-    Then, inside the Ubuntu terminal:
+    Open **Anaconda Prompt** (not PowerShell or Command Prompt) and run:
 
     ```bash
     npm install -g @anthropic-ai/claude-code
     ```
+
+    All subsequent `claude` commands should also be run from Anaconda Prompt.
 
 ### Verify the installation
 
@@ -308,25 +304,6 @@ Once your project is set up:
 
 ---
 
-## Claude Code vs. Gemini CLI
-
-Both are AI coding assistants in the terminal, but they have different strengths:
-
-| Feature | Gemini CLI | Claude Code |
-|---------|-----------|-------------|
-| **Provider** | Google (Gemini) | Anthropic (Claude) |
-| **Free tier** | Yes (1,000 req/day) | No (Pro/Max or API credits) |
-| **Autonomy** | Asks before each action | Can chain multiple actions together |
-| **File editing** | Creates/edits files with permission | Deep multi-file editing and refactoring |
-| **Git integration** | Basic | Full (commits, PRs, branches) |
-| **Persistent context** | No | Yes — reads CLAUDE.md automatically |
-| **Best for** | Quick questions, single-file tasks | Multi-file projects, sustained iteration |
-
-!!! tip "Use both"
-    Many developers use both depending on the task — Gemini CLI for quick free queries, Claude Code for complex multi-step work on a project they return to regularly.
-
----
-
 ## Troubleshooting
 
 ??? question "`claude: command not found` after installation"
@@ -344,7 +321,10 @@ Both are AI coding assistants in the terminal, but they have different strengths
         source ~/.zshrc
         ```
 
-    Then verify: `which claude`
+    === "Windows (Anaconda Prompt)"
+        Make sure you installed from **Anaconda Prompt** and are running `claude` from the same terminal. If it still fails, close and reopen Anaconda Prompt and try again.
+
+    Then verify: `which claude` (macOS/Linux) or `where claude` (Windows)
 
 ??? question "Authentication fails or browser doesn't open"
     Run `claude doctor` to diagnose. Common fixes:
