@@ -117,7 +117,7 @@ My work from the Data Engineering Workshop.
 - [x] Created GitHub account
 - [x] Cloned this repository
 - [ ] Installed Gemini CLI
-- [ ] Completed Keeling Curve demo
+- [ ] Completed Gemini CLI exercises
 ```
 
 ### 2. Stage, commit, and push

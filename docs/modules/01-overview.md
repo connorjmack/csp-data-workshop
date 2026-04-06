@@ -21,3 +21,7 @@ graph LR
 
 !!! info "Already have these?"
     If you already have Python, a code editor, and a GitHub account, skip ahead to [Terminal Basics](02-terminal-basics.md) or [Gemini CLI](03a-gemini-cli-install.md).
+
+---
+
+**Next:** [Conda & Python →](00a-conda-python.md)

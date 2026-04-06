@@ -2,8 +2,8 @@
 
 Claude Code is Anthropic's command-line AI coding agent. Like Gemini CLI, it lives in your terminal — but it's designed for deeper, multi-step work: reading your entire project, editing files, running commands, and iterating until something works.
 
-!!! info "Optional module"
-    This section is for those who want to explore an alternative (or additional) AI coding assistant. Claude Code requires a Claude Pro, Max, or API account — there is no free tier.
+!!! info "Account required"
+    Claude Code requires a Claude Pro, Max, or API account — there is no free tier.
 
 ---
 
@@ -26,13 +26,13 @@ The key difference from Gemini CLI: Claude Code can **chain multiple steps toget
 
 ## Prerequisites
 
-- **Node.js 18+** — check with:
+- **Node.js 20+** — check with:
 
     ```bash
     node --version
     ```
 
-    If it says `v18.x.x` or higher, you're good. If not, install it from [nodejs.org](https://nodejs.org).
+    If you completed the Gemini CLI module, you already have this. If not, install Node 20+ from [nodejs.org](https://nodejs.org).
 
 - **A Claude account** — one of:
     - Claude Pro or Max subscription at [claude.ai](https://claude.ai)
@@ -354,4 +354,4 @@ Once your project is set up:
 
 ---
 
-**Back to:** [Home](../index.md)
+**Back to:** [Home](../index.md) | **Previous:** [Gemini CLI →](03b-gemini-cli-usage.md)

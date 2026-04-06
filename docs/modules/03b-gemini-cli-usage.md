@@ -219,7 +219,7 @@ Turn 4: "Back to my CO₂ project. Can you modify the plotting script
 ```
 
 !!! tip "When in doubt, err on the side of keeping context"
-    For students working through the Keeling Curve demo, you'll likely work in **one continuous session** for the entire project. That's perfect! The context helps Gemini understand your data, your file names, and your goals.
+    For most projects, you'll work in one continuous session. That's ideal — the context helps Gemini understand your data, your file names, and your goals.
 
 ---
 
@@ -812,8 +812,8 @@ Try this sequence in Gemini CLI:
 3. Add a histogram plot saved as histogram.png
 ```
 
-!!! success "If you got through all three prompts, you're ready for the demo project!"
+!!! success "If you got through all three prompts, you're ready to move on to Claude Code!"
 
 ---
 
-**Next:** [Keeling Curve Demo — Overview →](04a-keeling-overview.md)
+**Next:** [Claude Code →](05-claude-code.md)

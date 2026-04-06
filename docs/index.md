@@ -21,23 +21,13 @@ By the end of this workshop, you will have:
 
 | Module | Topic | Time Estimate |
 |--------|-------|---------------|
-| **1** | [Setup](modules/01-overview.md) — Conda, Python, VS Code, GitHub, and your first repo | ~30 min |
-| **2** | [Terminal Basics](modules/02-terminal-basics.md) — navigating your system from the command line | ~20 min |
-| **3** | [Gemini CLI](modules/01a-gemini-login.md) — Gemini Pro login, install and use Google's AI coding assistant | ~20 min |
-| **4** | [Claude Code](modules/05-claude-code.md) — install Anthropic's AI coding agent and apply it to your capstone | ~30 min |
+| **1** | [Setup](modules/01-overview.md) — Conda, Python, VS Code, GitHub, and your first repo | ~15 min |
+| **2** | [Terminal Basics](modules/02-terminal-basics.md) — navigating your system from the command line | ~10 min |
+| **3** | [Gemini CLI](modules/01a-gemini-login.md) — Gemini Pro login, install and use Google's AI coding assistant | ~15 min |
+| **4** | [Claude Code](modules/05-claude-code.md) — install Anthropic's AI coding agent and apply it to your capstone | ~20 min |
 
 ---
 
-## Prerequisites
-
-- A laptop (macOS, Windows, or Linux)
-- A university email address (`.edu`) for Gemini Pro access
-- Willingness to experiment — you don't need to know how to code yet!
-
-!!! tip "Mixed experience levels welcome"
-    If you've used the terminal before, feel free to skim or skip the basics sections marked with :beginner:. If everything is new, take your time — every section is self-contained.
-
----
 
 ## Quick Start
 

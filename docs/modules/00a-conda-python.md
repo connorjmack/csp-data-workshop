@@ -6,30 +6,12 @@ Before we start coding, you need **Python** and a way to manage packages and env
 
 ## What is Conda?
 
-Conda is a **package manager** and **environment manager** rolled into one. Think of it this way:
+Conda is a **package manager** and **environment manager** rolled into one:
 
-- A **package manager** installs software for you (like `pip install pandas`, but broader — Conda can install Python itself, R, C libraries, and more)
-- An **environment manager** creates isolated "sandboxes" so that different projects can use different versions of packages without conflicting
+- **Package manager** — installs software, including Python itself, R, C libraries, and more (not just Python packages like `pip`)
+- **Environment manager** — creates isolated environments per project, so conflicting dependency versions don't interfere with each other
 
-### Why does this matter?
-
-Imagine you have two projects:
-
-- **Project A** needs `pandas 1.5` and `Python 3.9`
-- **Project B** needs `pandas 2.1` and `Python 3.12`
-
-Without environments, installing one would break the other. Conda solves this by creating separate environments for each project:
-
-```
-┌─────────────────────┐    ┌─────────────────────┐
-│ Environment: proj_a  │    │ Environment: proj_b  │
-│ Python 3.9           │    │ Python 3.12          │
-│ pandas 1.5           │    │ pandas 2.1           │
-│ numpy 1.24           │    │ numpy 1.26           │
-└─────────────────────┘    └─────────────────────┘
-```
-
-Each environment is completely independent. You switch between them with a single command.
+You switch between environments with a single command. Each is completely independent.
 
 ### Conda vs. pip
 

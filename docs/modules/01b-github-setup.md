@@ -27,9 +27,9 @@ https://github.com/signup
 - Enter the verification code sent to your email
 - Choose the **Free** plan (you can upgrade later)
 
-### 4. Skip the personalization (or fill it in)
+### 4. Skip the personalization
 
-GitHub will ask about your experience level and interests. You can skip this or fill it out — it just customizes your dashboard.
+GitHub will ask about your experience level and interests. Skip it.
 
 ---
 

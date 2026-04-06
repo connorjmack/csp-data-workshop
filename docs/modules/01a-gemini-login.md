@@ -50,7 +50,7 @@ If Pro isn't automatically enabled:
 Open [gemini.google.com](https://gemini.google.com) and try a test prompt:
 
 ```
-What is the Keeling Curve and why does it matter for climate science?
+What are the main challenges in managing large datasets for scientific research?
 ```
 
 If you get a detailed response, you're all set!

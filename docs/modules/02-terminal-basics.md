@@ -2,8 +2,7 @@
 
 The terminal (also called the command line, shell, or console) is how you talk to your computer using text instead of clicking. Every data engineer uses it daily.
 
-!!! note ":beginner: Beginners"
-    If you've never used a terminal before, read this whole page. If you're comfortable with `cd`, `ls`, and `pwd`, skip to [Essential Commands](02b-essential-commands.md).
+If you're already comfortable with `cd`, `ls`, and `pwd`, skip to [Essential Commands](02b-essential-commands.md).
 
 ---
 
@@ -166,7 +165,7 @@ cd ..
 rm -r terminal-practice
 ```
 
-!!! success "If you completed all 10 steps, you're ready to move on!"
+You now have the terminal basics down.
 
 ---
 
