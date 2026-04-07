@@ -112,7 +112,7 @@ This checks your installation and reports any issues. A healthy output looks lik
 
 ---
 
-## Your First Session
+## How a Session Works
 
 Navigate to any project directory and start Claude Code:
 
@@ -121,48 +121,19 @@ cd ~/your-project
 claude
 ```
 
-Claude Code will read the contents of your current directory before doing anything else. You'll see a prompt like:
+Claude Code reads the contents of your current directory automatically. You'll see:
 
 ```
 ✓ Loaded project context
 > 
 ```
 
-Type a question or task and press Enter. Try starting with something low-stakes:
+From here you can type questions or tasks. When you ask it to modify something, it shows you what it plans to do and asks for approval before touching any files. You press `y` to approve, `n` to cancel, or type feedback to adjust.
 
-```
-> What files are in this project and what does each one do?
-```
-
-Claude Code will read your files and give you a plain-English summary. This is a good way to see how well it understands your project before asking it to make changes.
-
-!!! tip "Start with questions, not edits"
-    Before asking Claude Code to change anything, ask it to explain what's there. This builds your confidence in what it understands — and catches any misunderstandings early.
-
-### Giving it a task
-
-When you ask it to modify something, Claude Code will show you what it plans to do and ask for approval:
-
-```
-> Add a docstring to the load_data function in data_loader.py
-
-I'll add a docstring to the load_data function. Here's what I plan to do:
-
-  Edit data_loader.py:
-  - Add a Google-style docstring describing the function's parameters and return value
-
-Proceed? [y/n]
-```
-
-Press `y` to approve, `n` to cancel. You can also type feedback and it will adjust.
-
-### One-shot commands
-
-You can skip the interactive session and give a task directly from the terminal:
+You can also skip the interactive session entirely and give a one-shot command from the terminal:
 
 ```bash
 claude "explain what this project does"
-claude "what does the train_model function do?"
 claude "add a --verbose flag to the CLI in main.py"
 ```
 
@@ -178,19 +149,22 @@ claude "add a --verbose flag to the CLI in main.py"
 
     **Goal:** Get comfortable with the read-explain-ask loop before you ask it to change anything.
 
+!!! tip "Start with questions, not edits"
+    Before asking Claude Code to change anything, ask it to explain what's there. This builds your confidence in what it understands — and catches any misunderstandings early.
+
 ---
 
 ## Exercise 2 — Make a Change
 
 !!! exercise "Try this now"
-    1. In the same project, ask Claude Code to make a small, low-risk change:
+    1. In the same project, ask Claude Code to make a small change:
         - Add a docstring to a function that doesn't have one
         - Rename a variable to be more descriptive
         - Add a comment explaining a confusing section of code
-    2. Review the proposed edit before approving
+    2. Review the proposed edit before approving — notice it shows you the diff before touching your files
     3. After it applies the change, open the file and confirm it looks right
 
-    **Goal:** Experience the propose-review-approve workflow. Notice that Claude Code shows you the diff before touching your files.
+    **Goal:** Experience the propose-review-approve workflow.
 
 ---
 
@@ -207,6 +181,13 @@ Claude Code has built-in slash commands that control your session. Type `/` insi
 | `/compact` | Compress the conversation history to free up context window space |
 | `/clear` | Wipe the conversation and start fresh (does not undo file changes) |
 | `/commit` | Stage and commit your changes with an auto-generated commit message |
+
+A few keyboard shortcuts are also worth knowing:
+
+| Shortcut | What it does |
+|----------|-------------|
+| `Esc` | Cancel a running action (useful when Claude is going down the wrong path) |
+| `Shift+Tab` | Enter multi-line input mode (for pasting code or writing longer prompts) |
 
 !!! exercise "Try this now"
     1. In your Claude Code session, run `/model` and note what models are available to you
@@ -379,6 +360,16 @@ project/
 
 ??? question "Can I use Claude Code for free?"
     There is no free tier. You need either a Claude Pro ($20/mo) or Max ($100/mo) subscription, or an Anthropic API key with credits. API usage for light sessions typically costs a few cents per session — check [anthropic.com/pricing](https://anthropic.com/pricing) for current rates.
+
+??? question "Claude Code is slow or says I've hit a usage limit"
+    Pro plan subscribers have a daily usage cap. During heavy sessions — especially with the Opus model — you can hit this limit and get throttled or temporarily blocked. A few ways to manage this:
+
+    - Use `/usage` regularly to check where you stand
+    - Switch to a lighter model with `/model` (Sonnet or Haiku) for simple tasks like explaining code or writing comments
+    - Use `/compact` to compress your conversation — shorter context means fewer tokens per request
+    - If you hit the cap, take a break and come back later — it resets daily
+
+    Max plan subscribers have a significantly higher cap. If you're using an API key, you're billed per token with no hard cap, but costs can add up in long sessions.
 
 ??? question "It keeps misunderstanding my project"
     This usually means your `CLAUDE.md` needs more context. Add:
