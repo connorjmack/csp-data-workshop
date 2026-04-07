@@ -194,25 +194,67 @@ claude "add a --verbose flag to the CLI in main.py"
 
 ---
 
-## Exercise 3 — Ask It to Fix Something
+## Slash Commands
+
+Claude Code has built-in slash commands that control your session. Type `/` inside an interactive session to see the full list. Here are the most useful ones to know:
+
+| Command | What it does |
+|---------|-------------|
+| `/help` | Show all available commands and keyboard shortcuts |
+| `/model` | Switch between models (Opus, Sonnet, Haiku) — trade capability for speed |
+| `/context` | See and manage what files Claude has loaded into its context |
+| `/usage` | Check your token usage and remaining quota |
+| `/compact` | Compress the conversation history to free up context window space |
+| `/clear` | Wipe the conversation and start fresh (does not undo file changes) |
+| `/commit` | Stage and commit your changes with an auto-generated commit message |
 
 !!! exercise "Try this now"
-    1. Find something in your project that's broken, incomplete, or could be improved
-    2. Describe the problem clearly: **"The load_data function crashes when the CSV has missing values — add handling for that"**
-    3. Let Claude Code propose a fix, review it, and approve
-    4. Ask it to run the relevant code to verify the fix works (if applicable)
+    1. In your Claude Code session, run `/model` and note what models are available to you
+    2. Run `/usage` to see your current token consumption
+    3. Run `/context` to see what files Claude has loaded from your project
 
-    **Goal:** Practice giving Claude Code a problem description rather than a solution. The more context you provide, the better the result.
+    These are useful for managing long sessions. `/compact` is especially helpful when Claude starts losing track of earlier context, and `/model` lets you drop to a faster model for simple tasks.
 
 ---
 
-## Applying Claude Code to Your Capstone
+## Exercise 3 — Build Something with Your Data
 
-The real power of Claude Code is in sustained, structured collaboration on a long-running project. Here's a lightweight workflow designed for masters capstone projects.
+This is where your capstone project enters the picture. You should have data, documents, or other materials from your project already on your machine. If you don't have capstone materials handy, any dataset will work — a CSV from a class assignment, a public dataset you've downloaded, anything.
 
-### Set up a CLAUDE.md file
+!!! exercise "Try this now"
+    1. Navigate to a directory containing data you're working with and start Claude Code
+    2. Ask it to **read your data and describe what it contains**:
+        ```
+        > Read the data files in this project and tell me what's there —
+          columns, row counts, data types, and anything that stands out
+        ```
+    3. Then ask it to **create a visualization**:
+        ```
+        > Using that data, create a Python script that generates a
+          meaningful plot. Pick the most interesting relationship you
+          see and save the figure as output.png
+        ```
+    4. Review the script it produces, approve it, and let it run
+    5. If the plot isn't what you want, give feedback and let it iterate:
+        ```
+        > Change this to a scatter plot instead, and increase the font
+          size on the axis labels
+        ```
 
-Claude Code automatically reads a file called `CLAUDE.md` at the root of your project at the start of every session. This is how you give the agent permanent context about your project — without re-explaining it every time.
+    **Goal:** Experience the full loop — data exploration, code generation, execution, and iteration — using your own project materials. This is the core workflow you'll use going forward.
+
+!!! tip "Bring context, get better results"
+    The more you tell Claude Code about what you're trying to do, the better the output. Instead of "make a plot," try "I'm investigating whether temperature affects yield in my experiment data — show me that relationship." Domain context makes a real difference.
+
+---
+
+## A Workflow to Try: Structured Capstone Sessions
+
+One way to get more out of Claude Code on a long-running project is to give it persistent context so you don't re-explain everything each session. This is optional — use what's helpful and skip what isn't.
+
+### CLAUDE.md — persistent project context
+
+Claude Code automatically reads a file called `CLAUDE.md` at the root of your project at the start of every session. Think of it as onboarding instructions for a research assistant who's joining your project.
 
 Create a `CLAUDE.md` in your project root with at minimum:
 
@@ -221,11 +263,6 @@ Create a `CLAUDE.md` in your project root with at minimum:
 
 ## Project
 One sentence: what this project does and what the deliverable is.
-
-## Key Files
-- Source of truth: paper/methods.md (or your main document)
-- Plan & status: docs/plan.md
-- Tasks: docs/todo.md
 
 ## Setup
 conda activate my-env  # or pip install -r requirements.txt
@@ -245,14 +282,14 @@ data/processed/  # cleaned datasets
 
 The more specific and current this file is, the more useful Claude Code will be. Update it as your project evolves.
 
-### Use plan.md and todo.md as the interface
+### plan.md and todo.md as a session interface
 
-The most effective workflow is:
+Some students find it useful to maintain two lightweight documents alongside their code:
 
-1. **`docs/plan.md`** — your strategic document: phases, milestones, approach, status markers
-2. **`docs/todo.md`** — a checkbox task list seeded from your plan, one concrete action per line
+1. **`docs/plan.md`** — a strategic overview: phases, milestones, approach, current status
+2. **`docs/todo.md`** — a checkbox task list seeded from the plan, one concrete action per line
 
-Then in each Claude Code session:
+Then at the start of each session:
 
 ```
 > Read docs/todo.md and tell me what the next unchecked task is
@@ -260,9 +297,11 @@ Then in each Claude Code session:
 > Go ahead and do that
 ```
 
-This is more effective than explaining your project from scratch each session. The agent picks up exactly where you left off.
+This can save you from re-explaining your project each session — the agent picks up where you left off. You can also ask Claude Code to generate these files for you based on your existing project materials.
 
-### Recommended directory structure
+### Example directory structure
+
+Here's one way to organize a capstone project for this workflow. You don't need all of these — adopt the pieces that make sense for your project:
 
 ```
 project/
@@ -272,7 +311,6 @@ project/
   docs/
     plan.md              # Milestones and strategy
     todo.md              # Living task checklist
-    architecture.md      # Codebase map and technical design
 
   src/                   # Library code
   scripts/               # Standalone scripts (analysis, figures)
@@ -283,24 +321,23 @@ project/
   paper/                 # Your written deliverable
 ```
 
-You don't need all of these at once — migrate your existing project incrementally.
-
-### What to ask Claude Code to help with
-
-Once your project is set up:
+### Example prompts for capstone work
 
 ```
 > Read CLAUDE.md and docs/todo.md, then do the next unchecked task
 
-> My data pipeline in scripts/preprocess.py is slow on large files — profile it and suggest optimizations
+> My data pipeline in scripts/preprocess.py is slow on large files —
+  profile it and suggest optimizations
 
-> I added three new functions to src/model.py — update docs/architecture.md to reflect that
+> Help me write the methods section for this analysis based on what
+  you see in the code
 
-> Help me write the methods section for this analysis based on what you see in the code
+> I just finished the feature engineering step — update docs/todo.md
+  to check that off and tell me what's next
 ```
 
 !!! tip "Let the agent update your docs"
-    After completing a task, ask Claude Code to check off the item in `todo.md` and update `architecture.md` if any files changed. This keeps your project state current with no manual bookkeeping.
+    After completing a task, you can ask Claude Code to check off the item in `todo.md` and update any project docs that changed. This keeps your project state current with minimal bookkeeping.
 
 ---
 
