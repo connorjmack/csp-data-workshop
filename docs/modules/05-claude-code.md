@@ -1,15 +1,6 @@
 # Claude Code
 
-Claude Code is Anthropic's command-line AI coding agent. Like Gemini CLI, it lives in your terminal — but it's designed for deeper, multi-step work: reading your entire project, editing files, running commands, and iterating until something works.
-
-!!! info "Account required"
-    Claude Code requires a Claude Pro, Max, or API account — there is no free tier.
-
----
-
-## What is Claude Code?
-
-Claude Code is an **agentic coding tool** that runs in your terminal. Unlike a chat interface, it can take actions directly in your project:
+Claude Code is Anthropic's command-line AI coding agent. Like Gemini CLI, it lives in your terminal — but it's designed for deeper, multi-step work. It can:
 
 - Read and understand your entire codebase
 - Write, edit, and refactor code across multiple files
@@ -18,6 +9,9 @@ Claude Code is an **agentic coding tool** that runs in your terminal. Unlike a c
 - Search the web and your local files
 
 The key difference from Gemini CLI: Claude Code can **chain multiple steps together autonomously**. You give it a goal, and it figures out the sequence of actions needed to get there.
+
+!!! info "Account required"
+    Claude Code requires a Claude Pro, Max, or API account — there is no free tier.
 
 !!! tip "How it handles your files"
     Claude Code will ask for your approval before taking actions that modify files or run commands — unless you tell it to proceed automatically. You are always in control.
